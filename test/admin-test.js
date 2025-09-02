@@ -5,13 +5,19 @@
  * 日期：2025-01-19
  */
 
+require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const bcrypt = require('bcryptjs');
 
-// Supabase 配置
-const SUPABASE_URL = 'https://xzfstilzddtljpgqyxkq.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6ZnN0aWx6ZGR0bGpwZ3F5eGtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY0NTA4OTgsImV4cCI6MjA3MjAyNjg5OH0.9osSBwlvb52s5tNKw_cHcNPAlFKsyVQShySkRFwfvvs';
-const SUPABASE_SERVICE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6ZnN0aWx6ZGR0bGpwZ3F5eGtxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjQ1MDg5OCwiZXhwIjoyMDcyMDI2ODk4fQ.tcBHJtSrw6uI5ZoW4hs4otiv7Ra44_K4hKM4uylqd9c';
+// Supabase 配置 - 从环境变量读取
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_SERVICE_KEY = process.env.VITE_SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+  console.error('缺少Supabase配置信息，请检查环境变量');
+  process.exit(1);
+}
 
 // 创建 Supabase 客户端（使用 service key 进行管理操作）
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);

@@ -4,13 +4,19 @@
  * 功能：检查数据库中admin账号的具体信息和密码哈希
  */
 
+require('dotenv').config()
 const { createClient } = require('@supabase/supabase-js')
 const bcrypt = require('bcryptjs')
 
-// Supabase配置
-const supabaseUrl = 'https://xzfstilzddtljpgqyxkq.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6ZnN0aWx6ZGR0bGpwZ3F5eGtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY0NTA4OTgsImV4cCI6MjA3MjAyNjg5OH0.9osSBwlvb52s5tNKw_cHcNPAlFKsyVQShySkRFwfvvs'
-const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6ZnN0aWx6ZGR0bGpwZ3F5eGtxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjQ1MDg5OCwiZXhwIjoyMDcyMDI2ODk4fQ.tcBHJtSrw6uI5ZoW4hs4otiv7Ra44_K4hKM4uylqd9c'
+// Supabase配置 - 从环境变量读取
+const supabaseUrl = process.env.VITE_SUPABASE_URL
+const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY
+const supabaseServiceKey = process.env.VITE_SUPABASE_SERVICE_ROLE_KEY
+
+if (!supabaseUrl || !supabaseServiceKey) {
+  console.error('缺少Supabase配置信息，请检查环境变量')
+  process.exit(1)
+}
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey)

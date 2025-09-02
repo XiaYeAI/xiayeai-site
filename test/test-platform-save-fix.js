@@ -4,11 +4,18 @@
  * 功能：验证社交平台保存功能的字段名修复是否生效
  */
 
+require('dotenv').config()
 const { createClient } = require('@supabase/supabase-js')
 
-// Supabase 配置 - 使用service_role_key进行测试以绕过RLS
-const supabaseUrl = 'https://xzfstilzddtljpgqyxkq.supabase.co'
-const supabaseServiceKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6ZnN0aWx6ZGR0bGpwZ3F5eGtxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjQ1MDg5OCwiZXhwIjoyMDcyMDI2ODk4fQ.tcBHJtSrw6uI5ZoW4hs4otiv7Ra44_K4hKM4uylqd9c'
+// Supabase 配置 - 从环境变量读取，使用service_role_key进行测试以绕过RLS
+const supabaseUrl = process.env.VITE_SUPABASE_URL
+const supabaseServiceKey = process.env.VITE_SUPABASE_SERVICE_ROLE_KEY
+
+if (!supabaseUrl || !supabaseServiceKey) {
+  console.error('缺少Supabase配置信息，请检查环境变量')
+  process.exit(1)
+}
+
 const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
 /**
