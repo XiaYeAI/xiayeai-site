@@ -1,0 +1,298 @@
+/**
+ * Markdown内容样式
+ * 功能：为渲染的Markdown内容提供简约美观的样式，与页面主题色调相称
+ * 作者：SOLO Coding
+ * 日期：2025-01-22
+ */
+
+/* 导入highlight.js样式 */
+@import 'highlight.js/styles/atom-one-light.css';
+
+/* Markdown容器样式 */
+.markdown-content {
+  @apply text-slate-700 leading-relaxed;
+  font-size: 16px;
+  max-width: none;
+}
+
+/* 标题样式 - 简约设计 */
+.markdown-content h1,
+.article-content.markdown-content h1 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  line-height: 1.2 !important;
+}
+
+.markdown-content h2,
+.article-content.markdown-content h2 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.25rem !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  line-height: 1.3 !important;
+}
+
+.markdown-content h3,
+.article-content.markdown-content h3 {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.4 !important;
+}
+
+.markdown-content h4,
+.article-content.markdown-content h4 {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.4 !important;
+}
+
+.markdown-content h5,
+.article-content.markdown-content h5 {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.4 !important;
+}
+
+.markdown-content h6,
+.article-content.markdown-content h6 {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: #475569 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.4 !important;
+}
+
+/* 段落样式 */
+.markdown-content p {
+  @apply mb-4 text-base leading-7 text-slate-600;
+  margin-bottom: 1.2em;
+}
+
+/* 列表样式 */
+.markdown-content ul,
+.article-content.markdown-content ul {
+  margin-bottom: 1rem !important;
+  padding-left: 1.5rem !important;
+  list-style-type: disc !important;
+}
+
+.markdown-content ol,
+.article-content.markdown-content ol {
+  margin-bottom: 1rem !important;
+  padding-left: 1.5rem !important;
+  list-style-type: decimal !important;
+}
+
+.markdown-content li,
+.article-content.markdown-content li {
+  margin-bottom: 0.25rem !important;
+  line-height: 1.75 !important;
+  color: #475569 !important;
+  padding-left: 0.25rem !important;
+  display: list-item !important;
+}
+
+.markdown-content ul li,
+.article-content.markdown-content ul li {
+  list-style-type: disc !important;
+  display: list-item !important;
+}
+
+.markdown-content ol li,
+.article-content.markdown-content ol li {
+  list-style-type: decimal !important;
+  display: list-item !important;
+}
+
+/* 链接样式 */
+.markdown-content a {
+  @apply text-blue-500 hover:text-blue-600 no-underline hover:underline transition-colors duration-200;
+  font-weight: 500;
+}
+
+/* 强调样式 */
+.markdown-content strong {
+  @apply font-semibold text-slate-800;
+}
+
+.markdown-content em {
+  @apply italic text-slate-600;
+}
+
+/* 行内代码样式 */
+.markdown-content code:not(.hljs),
+.article-content.markdown-content code:not(.hljs) {
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875rem !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-weight: 500 !important;
+}
+
+/* 代码块样式 */
+.markdown-content pre,
+.article-content.markdown-content pre {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+  margin: 1.25rem 0 !important;
+  overflow-x: auto !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.markdown-content pre code,
+.article-content.markdown-content pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+  font-size: 0.875rem !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  line-height: 1.5 !important;
+  color: #334155 !important;
+}
+
+/* highlight.js代码块样式覆盖 */
+.markdown-content .hljs,
+.article-content.markdown-content .hljs {
+  background-color: #f8fafc !important;
+  color: #334155 !important;
+  padding: 1rem !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* 引用样式 */
+.markdown-content blockquote {
+  @apply border-l-4 border-slate-300 pl-4 py-3 my-4 bg-slate-50 text-slate-600;
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+
+.markdown-content blockquote p {
+  @apply mb-0;
+  color: inherit;
+}
+
+/* 图片样式 */
+.markdown-content img,
+.markdown-content .markdown-image {
+  @apply max-w-full h-auto rounded-lg my-5 mx-auto block;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+/* 表格样式 */
+.markdown-content table {
+  @apply w-full border-collapse my-6;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.markdown-content th {
+  @apply bg-slate-100 border-b border-slate-200 px-4 py-3 text-left font-semibold text-slate-700;
+}
+
+.markdown-content td {
+  @apply border-b border-slate-100 px-4 py-3 text-slate-600;
+}
+
+.markdown-content tr:last-child td {
+  @apply border-b-0;
+}
+
+/* 水平分割线样式 */
+.markdown-content hr {
+  @apply border-0 border-t border-slate-200 my-8;
+  margin: 2rem 0;
+}
+
+/* 任务列表样式 */
+.markdown-content input[type="checkbox"] {
+  @apply mr-2;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .markdown-content {
+    font-size: 15px;
+  }
+  
+  .markdown-content h1 {
+    @apply text-xl;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .markdown-content h2 {
+    @apply text-lg;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .markdown-content h3 {
+    @apply text-base;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .markdown-content pre {
+    font-size: 13px;
+    padding: 0.75rem;
+  }
+  
+  .markdown-content table {
+    font-size: 14px;
+  }
+}
+
+/* 代码语言标签样式 */
+.markdown-content pre[class*="language-"]::before {
+  content: attr(class);
+  @apply absolute top-2 right-2 text-xs text-slate-500 bg-white px-2 py-1 rounded;
+  border: 1px solid #e2e8f0;
+}
+
+/* 滚动条样式 */
+.markdown-content pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.markdown-content pre::-webkit-scrollbar-track {
+  @apply bg-slate-100 rounded;
+}
+
+.markdown-content pre::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded;
+}
+
+.markdown-content pre::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
+
+/* 整体容器优化 */
+.markdown-content {
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
